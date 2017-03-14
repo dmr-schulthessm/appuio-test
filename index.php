@@ -1,8 +1,11 @@
 <?php
     try {
-        $user = 'appuio';
-        $pass = 'appuio';
-        $dbh = new PDO('mysql:host=localhost;dbname=appuio', $user, $pass);
+        $host = getenv('OPENSHIFT_MYSQL_DB_HOST') ?: 'localhost';
+        $user = getenv('OPENSHIFT_MYSQL_DB_USERNAME') ?: 'root';
+        $pass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD') ?: 'secret';
+        $dbname = getenv('OPENSHIFT_MYSQL_DB_DBNAME') ?: 'appuio_test';
+
+        $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
         die();
