@@ -1,8 +1,8 @@
 <?php
     try {
-        $user = 'root';
-        $pass = 'secret';
-        $dbh = new PDO('mysql:host=localhost;dbname=appuio_test', $user, $pass);
+        $user = 'appuio';
+        $pass = 'appuio';
+        $dbh = new PDO('mysql:host=localhost;dbname=appuio', $user, $pass);
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
         die();
